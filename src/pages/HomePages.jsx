@@ -4,31 +4,34 @@ import { AxiosInstance } from '../AxiosInstance';
 import { useFetch } from '../useFetchProduct/useFetch';
 
 const HomePages = () => {
-  const {data : products, isError, isLoading, error} = useFetch()
+  const { data: products, isError, isLoading, error } = useFetch();
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error.message}</div>
+    return <div>{error.message}</div>;
   }
 
   return (
-    <h1 className="text-3xl font-bold underline">
-      <div className="grid grid-cols-2 gap-5 mx-10">
+    <section id="home" className="pt-32 container">
+      <div className=" gap-10 m-8 grid grid-cols-1 lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 sm:items-center">
         {products?.map((product) => (
-          <div key={product.id}>
-            gambar
-            <img src={product.image} alt="" />
-            <h1 className="text-3xl">Nama Product : {product.name}</h1>
-            <h1 className="text-3xl">Price : {product.price}</h1>
-            <h1 className="text-3xl">PrdStatus : {product.status}</h1>
-            <h1 className="text-3xl">Category : {product.merchant}</h1>
+          <div key={product.id} className="border border-slate-600 w-full">
+            <img src={product.image_url} alt={product.name} className="rounded-md w-full overflow-hidden max-h-full mx-auto" />
+            <div className="mt-10 mb-3 px-4">
+              <h1 className="py-2 text-2xl font-bold text-slate-800 truncate">{product.name}</h1>
+              <h2 className="text-xl font-semibold text-red-400">IDR : {product.price}</h2>
+              <p className="py-3 text-lg font-medium">
+                Category :<span className='bg-slate-600 text-white px-3 py-2 rounded-full mx-3 text-center'> {product.merchant}</span>
+              </p>
+              <button className='w-full bg-slate-600 py-3 mt-10 text-white text-xl font-bold rounded-md'>Buy Now</button>
+            </div>
           </div>
         ))}
       </div>
-    </h1>
+    </section>
   );
 };
 

@@ -14,9 +14,11 @@ export default {
         primary : "#16a34a",
       }
     },
-    screens : {
-      '2xl' : '1320px',
-    }
+    screens: {
+      'sm': '576px',
+      'md': '960px',
+      'lg': '1340px',
+    },
   },
   plugins: [],
 }
