@@ -9,7 +9,7 @@ const Navbar = () => {
           <div className="text-white py-7">
             <h1 className="text-2xl">E-Commerce Tree</h1>
           </div>
-          {/* // MY Logo */}
+          {/* // MY Logo Pake Logo Disini klo ada */}
           <Nav />
         </div>
       </header>
