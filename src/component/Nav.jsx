@@ -27,7 +27,7 @@ const Nav = () => {
         </div>
       </div>
       <button className="md:hidden" onClick={handleNav}>
-        {opened ? <X size={35} color='white'/> : <Menu size={35} color='white' />}
+        {opened ? <X size={25} color='white'/> : <Menu size={25} color='white' />}
       </button>
       {opened && <div className="flex text-white basis-full flex-col mb-5  items-center">
         <NavLinks/>
