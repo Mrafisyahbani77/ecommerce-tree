@@ -1,32 +1,54 @@
+import Navbar from '../component/Navbar';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useMutationLogin } from '../useMutation/useMutationLogin';
 import React from "react";
 import Navbar from "../component/Navbar";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosInstance } from "../AxiosInstance";
 
 const Login = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    mutate();
-  };
-
-  const { mutate } = useMutation({
-    mutationKey: ["login"],
-    mutationFn: async () => {
-      const response = await AxiosInstance.post("/login", {
-        email: "admin@gmail.com",
-        password: "admin",
-      });
-      console.log(response);
-      return response;
-    },
-    onSuccess: () => {
-      alert("Login Success");
-    },
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup
+      .string()
+      .required()
+      .min(4, 'Password harus memiliki 4 huruf - minimum harus ada 4 chars.')
+      .matches(/^.{4,}$/, 'Minimal Memiliki 4 karakter'),
   });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const { mutate: SubmitLogin, onSubmit, error } = useMutationLogin();
+
+  if(error) {
+    return <div>{error.message}</div>
+  }
+
+  const submited = (data) => {
+    SubmitLogin(data);
+    console.log(data);
+  };
 
   return (
     <>
       <Navbar />
+      <form onSubmit={handleSubmit(submited)}>
+        <label>Email</label>
+        <input type="email" name="email" id="email" {...register('email')} />
+        <label>Password</label>
+        <input type="password" name="password" id="password" {...register('password')} />
+        <p className="text-red-600">{errors.email?.message}</p>
+        <p className="text-red-600">{errors.password?.message}</p>
+        <button type="submit">{onSubmit ? 'Loginned...' : 'Login'}</button>
+      </form>
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
           <div className="text-center">

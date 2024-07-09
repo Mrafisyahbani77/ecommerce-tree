@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 const NavLinks = () => {
   return (
     <>
-      <NavLink to="/" className='hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 hover:text-slate-800'>Home</NavLink>
-      <NavLink to="/cart" className='hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 hover:text-slate-800'>Cart</NavLink>
-      <NavLink to="/login" className='hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 hover:text-slate-800'>Login</NavLink>
+      <NavLink to="/" className='hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800'>Home</NavLink>
+      <NavLink to="/cart" className='hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800'>Cart</NavLink>
+      <NavLink to="/login" className='hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800'>Login</NavLink>
     </>
   );
 };

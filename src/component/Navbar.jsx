@@ -7,9 +7,9 @@ const Navbar = () => {
       <header className="bg-gray-800 border-b sticky top-0 flex-wrap z-10">
         <div className="container w-full px-4 font-semibold flex justify-between items-center mx-auto flex-wrap">
           <div className="text-white py-7">
-            <h1 className="md:text-2xl">E-Commerce Tree</h1>
+            <h1 className="text-xl md:text-2xl">E-Commerce Tree</h1>
           </div>
-          {/* // MY Logo */}
+          {/* // MY Logo Pake Logo Disini klo ada */}
           <Nav />
         </div>
       </header>
