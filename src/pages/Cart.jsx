@@ -1,6 +1,7 @@
 import Navbar from "../component/Navbar";
 import Keranjang from "../assets/Image/Ker.png"
 import Diskon from "../assets/Image/dis.png"
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   return (
@@ -16,7 +17,9 @@ export default function Cart() {
             <div>
               <p className="font-semibold text-sm md:text-lg">Wah, keranjang belanjamu kosong</p>
               <p className="text-gray-500">Yuk, isi dengan barang-barang impianmu!</p>
+              <Link to="/">
               <button className="mt-4 py-1 px-1 text-sm bg-green-500 text-white md:px-4 md:py-2 rounded-lg">Mulai Belanja</button>
+              </Link>
             </div>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6 md:max-w-lg w-full md:w-auto">
