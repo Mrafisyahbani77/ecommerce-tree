@@ -4,8 +4,6 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutationLogin } from '../useMutation/useMutationLogin';
 import React from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { AxiosInstance } from '../AxiosInstance';
 
 const Login = () => {
   const schema = yup.object().shape({
