@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutationLogin } from '../useMutation/useMutationLogin';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const schema = yup.object().shape({
@@ -23,11 +24,8 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const { mutate: SubmitLogin, onSubmit, error } = useMutationLogin();
+  const { mutate: SubmitLogin, onSubmit,  } = useMutationLogin();
 
-  if (error) {
-    return <div>{error.message}</div>;
-  }
 
   const submited = (data) => {
     SubmitLogin(data);
@@ -37,7 +35,7 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-svh">
         <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
           <div className="text-center">
             <span className="text-2xl font-bold text-gray-900">E-Commerce-Tree</span>
@@ -71,6 +69,7 @@ const Login = () => {
               >
                 {onSubmit ? 'Loginned...' : 'Login'}
               </button>
+              <Link to='/register' className='block pt-5 font-medium text-md'>Belum Punya Akun? Register <span className='text-cyan-400 underline'>Disini</span></Link>
             </div>
           </form>
         </div>
