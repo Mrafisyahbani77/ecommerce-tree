@@ -24,8 +24,8 @@ const Login = () => {
 
   const { mutate: SubmitLogin, onSubmit, error } = useMutationLogin();
 
-  if(error) {
-    return <div>{error.message}</div>
+  if (error) {
+    return <div>{error.message}</div>;
   }
 
   const submited = (data) => {

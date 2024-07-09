@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { AxiosInstance } from '../AxiosInstance';
 import { useState } from 'react';
 
-export const useMutationLogin = () => {
+export const useMutationLogin = ({onSuccess}) => {
   const [onSubmit, setOnSubmit] = useState(false);
   const { mutate, error } = useMutation({
     mutationKey: ['login'],
