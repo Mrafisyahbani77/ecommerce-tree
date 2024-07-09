@@ -18,7 +18,7 @@ export default function Cart() {
               <p className="font-semibold text-sm md:text-lg">Wah, keranjang belanjamu kosong</p>
               <p className="text-gray-500">Yuk, isi dengan barang-barang impianmu!</p>
               <Link to="/">
-              <button className="mt-4 py-1 px-1 text-sm bg-green-500 text-white md:px-4 md:py-2 rounded-lg">Mulai Belanja</button>
+              <button className="mt-4 py-1 px-2 text-sm md:text-md bg-green-500 text-white md:px-4 md:py-2 rounded-lg">Mulai Belanja</button>
               </Link>
             </div>
           </div>
