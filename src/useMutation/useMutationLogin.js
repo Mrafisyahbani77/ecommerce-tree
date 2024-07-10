@@ -31,7 +31,7 @@ export const useMutationLogin = () => {
  if(role.includes('admin')) {
         navigate('/adminDashboard');
       } else {
-        navigate('userDashboard');
+        navigate('/userDashboard');
       }
       setOnSubmit(false);
       return response;
