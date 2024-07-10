@@ -39,7 +39,7 @@ const Register = () => {
         <form className="space-y-5" onSubmit={handleSubmit(Submitted)}>
           <div>
             <label className="text-xl font-semibold text-slate-800">Username</label>
-            <input type="text" name="username" id="username" className="block w-full rounded-md py-2 px-3 mb-3 mt-2" {...register('username')} />
+            <input type="text" name="username" id="username" className="block w-full rounded-md py-2 px-3 mb-3 mt-2 border-2 border-slate-300" {...register('username')} />
             <p className="text-red-600">{errors.username?.message}</p>
           </div>
           <div>
