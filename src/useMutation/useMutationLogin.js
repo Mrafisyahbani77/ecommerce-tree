@@ -19,7 +19,7 @@ export const useMutationLogin = () => {
         token,
         permissions,
         user: { email, username },
-      } = response.data;
+      } = response.data
       console.log(response.data);
       if (success) {
      localStorage.setItem('username', username)

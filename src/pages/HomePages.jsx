@@ -4,7 +4,7 @@ import { AxiosInstance } from '../AxiosInstance';
 import { useFetch } from '../useFetchProduct/useFetch';
 
 const HomePages = () => {
-  const { data: products, isError, isLoading, error } = useFetch();
+  const { data: products, isLoading, error } = useFetch();
 
   if (isLoading) {
     return <div>Loading...</div>;
