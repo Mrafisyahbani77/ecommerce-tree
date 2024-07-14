@@ -5,6 +5,26 @@ import { AxiosInstance } from '../AxiosInstance';
 import toast from 'react-hot-toast';
 
 const NavLinks = () => {
+  const navigate = useNavigate();
+  const handelLogout = async (e) => {
+    const confirmLogout = confirm('Yakin nih Logout?');
+    if (confirmLogout) {
+      try {
+        e.preventDefault();
+        const response = await AxiosInstance.post('logout');
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        localStorage.removeItem('permission');
+        localStorage.removeItem('role');
+        navigate('/');
+        toast.success('Logout succes');
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <>
@@ -14,9 +34,11 @@ const NavLinks = () => {
       <NavLink to="/cart" className="hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800">
         Cart
       </NavLink>
-      <NavLink to="/login" className="hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800">
-        Login
-      </NavLink>
+      <form onSubmit={handelLogout}>
+        <button type="submit" className="hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800">
+          Logout
+        </button>
+      </form>
     </>
   );
 };

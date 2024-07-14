@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './Nav';
+import NavUsers from './NavUsers';
 
 const Navbar = () => {
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
             <h1 className="text-sm md:text-2xl">E-Commerce Tree</h1>
           </div>
           {/* // MY Logo Pake Logo Disini klo ada */}
-          <Nav/>
+          <NavUsers/>
         </div>
       </header>
     </>

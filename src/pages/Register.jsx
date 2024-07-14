@@ -44,7 +44,7 @@ const Register = () => {
           </div>
           <div>
             <label className="text-xl font-semibold text-slate-800">Email</label>
-            <input type="email" name="email" id="" className="block  w-full rounded-md py-2 px-3 mb-3 mt-2" {...register('email')} />
+            <input type="email" name="email" id="email" className="block  w-full rounded-md py-2 px-3 mb-3 mt-2" {...register('email')} />
             <p className="text-red-600">{errors.email?.message}</p>
           </div>
           <div>
@@ -54,7 +54,7 @@ const Register = () => {
           </div>
           <div>
             <label className="text-xl font-semibold text-slate-800">Password</label>
-            <input type="password" name="password" id="" className="block w-full rounded-md py-2 px-3 mb-3 mt-2" {...register('password')} />
+            <input type="password" name="password" id="password" className="block w-full rounded-md py-2 px-3 mb-3 mt-2" {...register('password')} />
             <p className="text-red-600">{errors.password?.message}</p>
           </div>
           <button type="submit" className="w-full font-semibold bg-indigo-500 text-xl py-3 rounded-md text-white hover:bg-indigo-700 transition duration-300 ease-in-out shadow-xl shadow-indigo-300">
