@@ -10,6 +10,7 @@ export default function RouterApp() {
         <Route path="/" element={<LandingPages />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/register" element={<Register />} />
         {/* <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} /> */}

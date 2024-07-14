@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export const useMutationLogin = () => {
   const [onSubmit, setOnSubmit] = useState(false);
-  const { mutate, error } = useMutation({
+  const { mutate } = useMutation({
     mutationKey: ['login'],
     mutationFn: async (data) => {
       setOnSubmit(true);
@@ -20,6 +20,13 @@ export const useMutationLogin = () => {
         duration: 3000,
       });
     },
+
+    onError : () => {
+      toast.error('Password atau Email anda salah',{
+        position: 'top-right',
+        duration: 3000,
+      })
+    }
   });
-  return { mutate, onSubmit, error };
+  return { mutate, onSubmit, };
 };
