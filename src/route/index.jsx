@@ -3,6 +3,7 @@ import HomePages from "../pages/HomePages";
 import LandingPages from "../pages/LandingPages";
 import Login from "../pages/Login";
 import Cart from "../pages/Cart";
+import Register from "../pages/Register";
 
 export default function RouterApp() {
   return (
