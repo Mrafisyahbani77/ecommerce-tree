@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../component/Navbar'
-import HomePages from './HomePages'
+import Product from './Product'
 
 const LandingPages = () => {
   return (
     <>
     <div>
         <Navbar/>
-        <HomePages/>
+        <Product/>
     </div>
     </>
   )
