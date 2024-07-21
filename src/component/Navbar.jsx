@@ -1,13 +1,15 @@
 import React from 'react';
 import Nav from './Nav';
+import Icons from "../assets/Image/icon2.png"
 
 const Navbar = () => {
   return (
     <>
       <header className="bg-gray-800 border-b sticky top-0 flex-wrap z-10">
         <div className="container w-full px-4 font-semibold flex justify-between items-center mx-auto flex-wrap">
-          <div className="text-white py-7">
-            <h1 className="text-sm md:text-2xl">E-Commerce Tree</h1>
+          <div className="text-white flex py-7">
+            <img src={Icons} alt='Icons' className='md:w-10 w-5 rounded-2xl mr-2'/>
+            <h1 className="text-sm md:mt-1 md:text-2xl">E-Commerce Tree</h1>
           </div>
           {/* // MY Logo Pake Logo Disini klo ada */}
           <Nav/>
