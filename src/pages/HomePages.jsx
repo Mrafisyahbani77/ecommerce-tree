@@ -15,11 +15,11 @@ const HomePages = () => {
   }
 
   return (
-    <section id="home" className="pt-32 container">
+    <section id="home" className="container md:pt-10">
       <div className=" gap-10 my-8 grid grid-cols-1 lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 sm:items-center">
         {products?.map((product) => (
           <div key={product.id} className="border border-slate-600 w-full">
-            <img src={product.image_url} alt={product.name} className="object-cover rounded-md w-full overflow-hidden md:max-h-52 max-h-80 mx-auto" />
+            <img src={product.image_url} alt={product.name} className="object-cover rounded-md w-full overflow-hidden md:max-h-52 mx-auto" />
             <div className="mt-10 mb-3 px-4">
               <h1 className="py-2 text-2xl font-bold text-slate-800 truncate">{product.name}</h1>
               <h2 className="text-xl font-semibold text-red-400">IDR : {product.price}</h2>
