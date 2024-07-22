@@ -12,6 +12,10 @@ export default {
     extend: {
       colors : {
         primary : "#16a34a",
+        secondary : "#fafafa",
+        success : "#22c55e",
+        warning : "#fde047",
+        bird : '#06b6d4'
       }
     },
     screens: {

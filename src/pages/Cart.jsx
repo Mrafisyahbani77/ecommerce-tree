@@ -22,6 +22,8 @@ export default function Cart() {
     }, 2000);
   };
 
+  
+
   return (
     <>
       <Navbar />
