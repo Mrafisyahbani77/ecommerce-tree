@@ -16,6 +16,7 @@ export default {
         success : "#22c55e",
         warning : "#fde047",
         bird : '#06b6d4'
+        
       }
     },
     screens: {

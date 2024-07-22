@@ -25,11 +25,11 @@ export default function Cart() {
   
 
   return (
-    <>
+    <div className="background-color h-screen">
       <Navbar />
-      <div className="container mx-auto px-10">
+      <div className=" container mx-auto px-10">
         <div className="my-4">
-          <p className="font-semibold md:text-left sm:text-left text-xl text-center md:text-2xl">
+          <p className="font-semibold text-white md:text-left sm:text-left text-xl text-center md:text-2xl">
             Keranjang
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function Cart() {
               <span className="ml-auto md:ml-auto">&gt;</span>
             </div>
             <button
-              className="mt-4 bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded-lg w-full flex justify-center items-center"
+              className="mt-4 bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-lg w-full flex justify-center items-center"
               onClick={handleButtonClick}
               disabled={buttonLoading}
             >
@@ -89,6 +89,6 @@ export default function Cart() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
