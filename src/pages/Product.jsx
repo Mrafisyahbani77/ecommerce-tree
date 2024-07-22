@@ -1,12 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useFetch } from '../useFetchProduct/useFetch';
-import Banner from './Banner';
-import { ShoppingCart } from 'lucide-react';
-import { AppContext } from '../store/context';
+  // import React, { useContext, useEffect, useState } from 'react';
+  import { useFetch } from '../useFetchProduct/useFetch';
+  import Banner from './Banner';
+  import { ShoppingCart } from 'lucide-react';
+  import { AppContext } from '../store/context';
+  import { useMutation } from '@tanstack/react-query';
+  import { AxiosInstance } from '../AxiosInstance';
 
-const HomePages = () => {
+
+const Product = () => {
   const { data: products, isLoading, error } = useFetch();
-  const { addToCart } = useContext(AppContext);
+  // const { addToCart } = useContext(AppContext);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -14,6 +17,13 @@ const HomePages = () => {
   if (error) {
     return <div>{error.message}</div>;
   }
+
+  // const {} = useMutation({
+  //   mutationKey : ['mutation.product.cart'],
+  //   mutationFn : async () => {
+  //     const response = await AxiosInstance.post('')
+  //   }
+  // })
 
   return (
     <>
@@ -46,4 +56,6 @@ const HomePages = () => {
   );
 };
 
-export default HomePages;
+export default Product
+
+  
