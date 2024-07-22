@@ -5,7 +5,7 @@ import Icons from "../assets/Image/logo3.png"
 const Navbar = () => {
   return (
     <>
-      <header className="bg-secondary shadow-md border-b sticky top-0 flex-wrap z-10">
+      <header className="bg-secondary shadow-md border-b sticky top-0 flex-wrap z-50">
         <div className="container w-full px-4 font-semibold flex justify-between items-center mx-auto flex-wrap">
           <div className="text-black flex py-7">
             <img src={Icons} alt='Icons' className='md:w-10 w-5 bg-black rounded-2xl mr-2'/>
