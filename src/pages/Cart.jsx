@@ -52,7 +52,7 @@ export default function Cart() {
                     Yuk, isi dengan barang-barang impianmu!
                   </p>
                   <Link to="/">
-                    <button className="mt-4 py-1 px-2 text-sm md:text-md bg-green-500 text-white md:px-4 md:py-2 rounded-lg">
+                    <button className="mt-4 hover:bg-green-700 py-1 px-2 text-sm md:text-md bg-green-500 text-white md:px-4 md:py-2 rounded-lg">
                       Mulai Belanja
                     </button>
                   </Link>
