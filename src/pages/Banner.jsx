@@ -1,7 +1,7 @@
-import React from 'react';
-import { useFetchBanner } from '../useFetchComponent/useFetchBanner';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import React from "react";
+import { useFetchBanner } from "../useFetchComponent/useFetchBanner";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Banner = () => {
   const { data, isFetching, isLoading, error } = useFetchBanner();
@@ -32,18 +32,31 @@ const Banner = () => {
     return <div>{error.message}</div>;
   }
 
-  if(isFetching) {
-    return <div>Fetching...</div>
+  if (isFetching) {
+    return <div>Fetching...</div>;
   }
 
   return (
     <div className="container pt-10">
-      <Carousel responsive={responsive} swipeable={true} draggable={true} infinite={true} showDots={true} autoPlay={true} autoPlaySpeed={2500} transitionDuration={500}>
+      <Carousel
+        responsive={responsive}
+        swipeable={true}
+        draggable={true}
+        infinite={true}
+        showDots={true}
+        autoPlay={true}
+        autoPlaySpeed={2500}
+        transitionDuration={500}
+      >
         {data?.data.map((banner, index) => (
           <div key={index}>
+            <h1 className="absolute top-0">{banner.title}</h1>
             <div className="relative w-full">
-              <img className="w-full rounded-md object-cover" src={`http://127.0.0.1:8000/storage/${banner.image_path}`} alt={banner.title} />
-              <h1 className='absolute top-0'>{banner.title}</h1>
+              <img
+                className="w-full rounded-md object-cover"
+                src={`http://127.0.0.1:8000/storage/${banner.image_path}`}
+                alt={banner.title}
+              />
             </div>
           </div>
         ))}
