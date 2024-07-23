@@ -1,10 +1,9 @@
-  import { useFetch } from '../useFetchProduct/useFetch';
-  import Banner from './Banner';
-  import { ShoppingCart } from 'lucide-react';
-  import { AppContext } from '../store/context';
-  import { useMutation } from '@tanstack/react-query';
-  import { AxiosInstance } from '../AxiosInstance';
-
+import { useFetch } from '../useFetchProduct/useFetch';
+import Banner from './Banner';
+import { ShoppingCart } from 'lucide-react';
+import { AppContext } from '../store/context';
+import { useMutation } from '@tanstack/react-query';
+import { AxiosInstance } from '../AxiosInstance';
 
 const Product = () => {
   const { data: products, isLoading, error } = useFetch();
@@ -27,13 +26,13 @@ const Product = () => {
     <>
       <Banner />
       <section id="home" className="pt-10 pb-12 container px-4">
-        <h1 className='text-xl font-bold py-5 md:text-2xl lg:text-3xl'>Kategori Pilihan</h1>
-        <hr/>
+        <h1 className="text-xl font-bold py-5 md:text-2xl lg:text-3xl">Kategori Pilihan</h1>
+        <hr />
         <div className="md:grid grid-cols-2 lg:grid lg:grid-cols-3 max-w-full">
           {products?.map((product) => (
             <div key={product.id} className="rounded-md bg-white shadow-md p-5 mx-auto">
-              <div className='object-cover rounded-md overflow-hidden'>
-                <img src={product.image_url} alt={product.name} className='mx-auto max-w-md max-h-48' />
+              <div className="object-cover rounded-md overflow-hidden">
+                <img src={product.image_url} alt={product.name} className="mx-auto max-w-md max-h-48" />
               </div>
               <div className="mt-10 mb-3 flex flex-col justify-center truncate">
                 <h1 className="py-2 text-xl font-semibold text-slate-800 truncate">{product.name}</h1>
@@ -56,6 +55,4 @@ const Product = () => {
   );
 };
 
-export default Product
-
-  
+export default Product;
