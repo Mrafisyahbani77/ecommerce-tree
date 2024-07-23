@@ -9,7 +9,7 @@
 }
 
 .background-color {
-  @apply bg-cyan-800 text-black;
+  @apply bg-cyan-800 text-black h-full;
 }
 
 @keyframes slideInLeft {

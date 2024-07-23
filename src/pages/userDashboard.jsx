@@ -1,6 +1,5 @@
 import React from 'react'
 import NavbarUsers from '../component/NavbarUsers'
-import Banner from './Banner'
 import Product from './Product'
 
 const userDashboard = () => {
@@ -8,7 +7,6 @@ const userDashboard = () => {
   return (
     <div>
         <NavbarUsers/>
-        <Banner/>
         <Product/>
     </div>
   )
