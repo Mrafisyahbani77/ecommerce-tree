@@ -29,14 +29,14 @@ const NavLinks = () => {
   return (
     <>
       <NavLink
-        to="/"
-        className="hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800"
+        to="/userdashboard"
+        className="text-black w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2"
       >
         Home
       </NavLink>
       <NavLink
         to="/cart"
-        className="hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800"
+        className="text-black w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2"
       >
         Cart
       </NavLink>
@@ -44,7 +44,7 @@ const NavLinks = () => {
       <button
         onClick={handelLogout}
         type="submit"
-        className="hover:bg-white w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2 hover:text-slate-800"
+        className="text-black w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2"
       >
         Logout
       </button>

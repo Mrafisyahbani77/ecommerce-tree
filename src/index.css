@@ -2,7 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .hover\:shadow-gradient-to-l:hover {
-    box-shadow: 0 4px 6px -1px rgba(171, 64, 244, 0.7), 0 2px 4px -2px rgba(171, 64, 244, 0.7), 0 4px 6px -1px rgba(0, 206, 201, 0.7), 0 2px 4px -2px rgba(0, 206, 201, 0.7);
+  box-shadow: 0 4px 6px -1px rgba(171, 64, 244, 0.7),
+    0 2px 4px -2px rgba(171, 64, 244, 0.7),
+    0 4px 6px -1px rgba(0, 206, 201, 0.7), 0 2px 4px -2px rgba(0, 206, 201, 0.7);
+}
+
+.background-color {
+  @apply bg-cyan-800 text-black h-full;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
   }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.group:hover .animate-slideInLeft {
+  animation: slideInLeft 0.5s forwards;
+}
+
+.group:hover .animate-slideInRight {
+  animation: slideInRight 0.5s forwards;
+}
