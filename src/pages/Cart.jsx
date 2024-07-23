@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useFetchCart } from "../useFetchProduct/useFetch";
 import NavbarUser from "../component/NavbarUsers";
+
 export default function Cart() {
   const [loading, setLoading] = useState(true);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -69,38 +70,36 @@ export default function Cart() {
                       </Link>
                     </div>
                   ) : (
-                    <div className="w-full inline-block space-y-5">
+                    <div className="space-y-5 w-full">
                       {data.map((cartItem) => (
                         <div
                           key={cartItem.id}
-                          className="flex items-center justify-between p-4 border-b"
+                          className="flex items-center justify-between p-4 border shadow"
                         >
-                          <table>
-                            <tbody>
-                              <thead>
-                                <tr>Nama Barang</tr>
-                                <tr>Price</tr>
-                              </thead>
-                            </tbody>
+                          <table className="w-full">
+                            <thead>
+                              <tr>
+                                <th className="">
+                                  <img
+                                    src={cartItem.product.image_url}
+                                    alt={cartItem.product.name}
+                                    className="w-24 h-24 object-cover rounded-md"
+                                  />
+                                </th>
+                                <th className="text-left">
+                                  <p className="font-semibold">
+                                    {cartItem.product.name}
+                                  </p>
+                                  <p className="text-gray-500 text-sm ">
+                                    {cartItem.product.merchant}
+                                  </p>
+                                </th>
+                                <th className="p-4 text-right text-red-400">
+                                  IDR: {cartItem.product.price}
+                                </th>
+                              </tr>
+                            </thead>
                           </table>
-                          {/* <img
-                            src={cartItem.product.image_url}
-                            alt={cartItem.product.name}
-                            className="w-24 h-24 object-cover rounded-md"
-                          /> */}
-                          {/* <div className="ml-4 w-full ">
-                            <h1 className="text-xl font-semibold">
-                              {cartItem.product.name}
-                            </h1>
-                            <p className="text-gray-500">
-                              {cartItem.product.merchant}
-                            </p>
-                            <div className="">
-                            <p className="text-red-400">
-                              IDR: {cartItem.product.price}
-                            </p>
-                            </div>
-                          </div> */}
                         </div>
                       ))}
                     </div>
