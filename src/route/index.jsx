@@ -7,6 +7,7 @@ import UserDashboard from '../pages/userDashboard';
 import NotFoud from '../pages/NotFoud';
 import { useFetch } from '../useFetchProduct/useFetch';
 import { AppContext, AppProvider } from '../store/context';
+import Profile from '../pages/Profile';
 
 export default function RouterApp() {
   const {data} = useFetch()
@@ -18,6 +19,7 @@ export default function RouterApp() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/register" element={<Register />} />
       <Route path="/userDashboard" element={<UserDashboard />} />
+      <Route path="/Profile" element={<Profile />} />
       {/* <Route path="/contact" element={<Contact />} />*/}
       <Route path="*" element={<NotFoud />} />  
     </Routes>
