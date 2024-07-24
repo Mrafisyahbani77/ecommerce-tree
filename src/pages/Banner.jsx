@@ -75,7 +75,7 @@ const Banner = () => {
         {data?.data.map((banner, index) => (
           <div key={index} className="relative">
             <img
-              className="w-full h-[350px] rounded-xl object-cover"
+              className="w-full md:h-[350px] rounded-xl object-cover"
               src={`http://127.0.0.1:8000/storage/${banner.image_path}`}
               alt={banner.title}
             />
