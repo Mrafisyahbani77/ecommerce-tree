@@ -42,7 +42,7 @@ const Product = () => {
       <section id="home" className="pt-10 pb-12 container px-4">
         <h1 className="text-xl font-bold py-5 md:text-2xl lg:text-3xl">Kategori Pilihan</h1>
         <hr />
-        <div className="md:grid grid-cols-2 mt-10 lg:grid lg:grid-cols-3 max-w-full">
+        <div className="md:grid grid-cols-2 space-y-10  mt-10 lg:grid lg:grid-cols-3 max-w-full">
           {products?.map((product) => (
             <div key={product.id} className="rounded-md bg-white shadow-lg p-5 mx-auto">
               <div className="object-cover rounded-md overflow-hidden">

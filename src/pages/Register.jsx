@@ -45,9 +45,9 @@ const Register = () => {
   const { mutate } = useMutationRegister();
 
   return (
-    <>
+    <div className="background-color">
       <Navbar />
-      <div className="max-w-md p-8 mx-auto bg-white shadow rounded-lg my-10">
+      <div className="max-w-md p-8 mx-auto bg-white shadow rounded-lg mt-10">
         <h1 className="text-center mb-10 text-3xl font-bold  bg-gradient-to-r bg-clip-text text-transparent from-indigo-500 via-indigo-400 to-cyan-500">
           Register
         </h1>
@@ -126,7 +126,7 @@ const Register = () => {
           >
             Submit
           </button>
-          <div className="w-full px-3 text-lg">
+          <div className="w-full md:px-3 text-lg">
             {" "}
             <Link to="/login">
               Sudah Memiliki Akun? Login{" "}
@@ -135,7 +135,7 @@ const Register = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
