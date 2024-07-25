@@ -40,7 +40,6 @@ const Login = () => {
 
   const submited = (data) => {
     SubmitLogin(data);
-    console.log(data);
   };
 
   return (

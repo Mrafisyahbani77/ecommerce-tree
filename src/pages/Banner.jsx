@@ -17,7 +17,7 @@ const CustomLeftArrow = ({ onClick }) => {
 const CustomRightArrow = ({ onClick }) => {
   return (
     <button
-      className="absolute right-0 top-1/2 p-2 px-4 bg-gray-700 text-white rounded-full shadow-md z-20 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110 transform -translate-y-1/2 animate-slideInRight"
+      className="absolute right-0  top-1/2 p-2 px-4 bg-gray-700 text-white rounded-full shadow-md z-20 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110 transform -translate-y-1/2 animate-slideInRight"
       onClick={onClick}
     >
       &#10095;
