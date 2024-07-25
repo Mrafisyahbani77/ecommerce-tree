@@ -19,7 +19,7 @@ export const useFetch = () => {
 };
 
   export const useFetchCart = () => {
-    const {data , isLoading, isError, isFetching} = useQuery({
+    const {data , isLoading, isError, isFetching, error} = useQuery({
       queryKey : ['product.cart'], 
       queryFn : async () => {
         const response = await AxiosInstance.get('carts-items/')
@@ -29,7 +29,7 @@ export const useFetch = () => {
       }
     })
   return {
-    data, isLoading, isError, isFetching
+    data, isLoading, isError, isFetching, error
   }
   }
 

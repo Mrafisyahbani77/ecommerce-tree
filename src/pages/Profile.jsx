@@ -16,8 +16,7 @@ export default function Profile() {
     return <div>No Available</div>;
   }
 
-  console.log();
-
+    
   return (
     <>
       <Navbar />
