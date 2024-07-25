@@ -46,7 +46,7 @@
 .checkbox-green {
   appearance: none;
   background-color: #fff;
-  border: 1px solid #000;
+  border: 2px solid #000;
   padding: 7px;
   border-radius: 3px;
   display: inline-block;

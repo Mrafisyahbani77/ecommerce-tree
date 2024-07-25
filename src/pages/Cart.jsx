@@ -84,7 +84,7 @@ export default function Cart() {
                     <div className="flex items-center text-green">
                       <input 
                         type="checkbox" 
-                        className="mr-2 checkbox-green" 
+                        className="mr-2 checkbox-green cursor-pointer" 
                         checked={selectAll} 
                         onChange={() => setSelectAll(!selectAll)} 
                       />
@@ -94,24 +94,18 @@ export default function Cart() {
                       <div key={cartItem.id} className="flex items-center justify-between p-4 border shadow">
                         <input 
                           type="checkbox" 
-                          className="mr-2 checkbox-green " 
+                          className="mr-2 checkbox-green cursor-pointer" 
                           checked={selectedItems.includes(cartItem.id)} 
                           onChange={() => handleSelectItem(cartItem.id)} 
                         />
-                        <table className="w-full">
-                          <thead>
-                            <tr>
-                              <th>
-                                <img src={cartItem.product.image_url} alt={cartItem.product.name} className="md:w-24 md:h-24 w-20 h-16 object-cover rounded-md" />
-                              </th>
-                              <th className="text-left">
-                                <p className="md:font-semibold md:text-md text-xs">{cartItem.product.name}</p>
-                                <p className="text-gray-500 text-xs">{cartItem.product.merchant}</p>
-                              </th>
-                              <th className="text-right md:text-md kecil text-red-400">IDR: {cartItem.product.price}</th>
-                            </tr>
-                          </thead>
-                        </table>
+                        <div className="flex items-center w-full">
+                          <img src={cartItem.product.image_url} alt={cartItem.product.name} className="md:w-24 md:h-24 w-20 h-16 object-cover rounded-md mr-4" />
+                          <div className="flex flex-col">
+                            <p className="md:font-semibold md:text-lg text-xs">{cartItem.product.name}</p>
+                            <p className="text-gray-500 md:text-md text-xs">{cartItem.product.merchant}</p>
+                          </div>
+                          <p className="ml-auto text-right md:text-lg kecil text-red-400">IDR: {cartItem.product.price}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
