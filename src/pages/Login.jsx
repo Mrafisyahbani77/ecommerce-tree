@@ -40,14 +40,15 @@ const Login = () => {
 
   const submited = (data) => {
     SubmitLogin(data);
-    console.log(data);
   };
 
   return (
     <>
       <Navbar />
       <div className=" background-color flex items-center justify-center min-h-svh">
+        <div className="hidden md:flex">
         <img src={logo} alt="" className="w-[100%] max-w-md p-8 space-y-8 "/>
+        </div>
         <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
           <div className="text-center">
             <span className="text-2xl font-bold text-gray-900">

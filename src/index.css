@@ -41,3 +41,33 @@
 .group:hover .animate-slideInRight {
   animation: slideInRight 0.5s forwards;
 }
+
+
+.checkbox-green {
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 7px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox-green:checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.kecil {
+  font-size:10px;
+}
+
+.checkbox-green:checked::after {
+  content: '✔';
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

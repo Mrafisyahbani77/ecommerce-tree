@@ -17,7 +17,7 @@ const CustomLeftArrow = ({ onClick }) => {
 const CustomRightArrow = ({ onClick }) => {
   return (
     <button
-      className="absolute right-0 top-1/2 p-2 px-4 bg-gray-700 text-white rounded-full shadow-md z-20 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110 transform -translate-y-1/2 animate-slideInRight"
+      className="absolute right-0  top-1/2 p-2 px-4 bg-gray-700 text-white rounded-full shadow-md z-20 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110 transform -translate-y-1/2 animate-slideInRight"
       onClick={onClick}
     >
       &#10095;
@@ -75,7 +75,7 @@ const Banner = () => {
         {data?.data.map((banner, index) => (
           <div key={index} className="relative">
             <img
-              className="w-full h-[350px] rounded-xl object-cover"
+              className="w-full md:h-[350px] h-[ rounded-xl object-cover"
               src={`http://127.0.0.1:8000/storage/${banner.image_path}`}
               alt={banner.title}
             />

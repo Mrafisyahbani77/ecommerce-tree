@@ -1,30 +1,32 @@
-import React, { useContext } from 'react';
-import { useFetch } from '../useFetchProduct/useFetch';
-import Banner from './Banner';
-import { ShoppingCart } from 'lucide-react';
-import { AppContext } from '../store/context';
-import { useMutation } from '@tanstack/react-query';
-import { AxiosInstance } from '../AxiosInstance';
-import toast from 'react-hot-toast';
+import React, { useContext } from "react";
+import { useFetch } from "../useFetchProduct/useFetch";
+import Banner from "./Banner";
+import { ShoppingCart } from "lucide-react";
+import { AppContext } from "../store/context";
+import { useMutation } from "@tanstack/react-query";
+import { AxiosInstance } from "../AxiosInstance";
+import toast from "react-hot-toast";
 
 const Product = () => {
   const { data: products, isLoading, error } = useFetch();
   const { dispatch } = useContext(AppContext);
 
   const mutation = useMutation({
-    mutationKey: ['mutation.product.cart'],
+    mutationKey: ["mutation.product.cart"],
     mutationFn: async (product) => {
-      const response = await AxiosInstance.post('/carts-items/store', { products_id: product.id });
+      const response = await AxiosInstance.post("/carts-items/store", {
+        products_id: product.id,
+      });
       return response.data;
     },
     onSuccess: (data) => {
       // Update the cart in context or any other state management
-      dispatch({ type: 'ADD_TO_CART', payload: data });
+      dispatch({ type: "ADD_TO_CART", payload: data });
     },
   });
 
   const addToCart = (product) => {
-    toast.success("Product Added")
+    toast.success("Product Added");
     mutation.mutate(product);
   };
 
@@ -40,26 +42,46 @@ const Product = () => {
     <>
       <Banner />
       <section id="home" className="pt-10 pb-12 container px-4">
-        <h1 className="text-xl font-bold py-5 md:text-2xl lg:text-3xl">Kategori Pilihan</h1>
+        <h1 className="text-xl font-bold py-5 md:text-2xl lg:text-3xl">
+          Kategori Pilihan
+        </h1>
         <hr />
         <div className="md:grid grid-cols-2 mt-10 lg:grid lg:grid-cols-3 max-w-full">
           {products?.map((product) => (
-            <div key={product.id} className="rounded-md bg-white shadow-lg p-5 mx-auto">
-              <div className="object-cover rounded-md overflow-hidden">
-                <img src={product.image_url} alt={product.name} className="mx-auto max-w-md max-h-48" />
+            <div
+              key={product.id}
+              className="rounded-md mb-10 bg-white shadow-lg p-5 mx-auto max-w-xs border border-gray-200"
+            >
+              <div className="relative">
+                <img
+                  src={product.image_url}
+                  alt={product.name}
+                  className="object-cover rounded-t-md w-full h-48"
+                />
               </div>
-              <div className="mt-10 mb-3 flex flex-col justify-center truncate">
-                <h1 className="py-2 text-xl font-semibold text-slate-800 truncate">{product.name}</h1>
-                <h2 className="text-xl font-medium text-red-400">IDR : {product.price}</h2>
-                <p className="py-3 text-lg font-medium">
-                  Category :<span className="bg-slate-600 text-white px-3 py-2 rounded-full mx-3 text-center"> {product.merchant}</span>
-                </p>
-                <div>
-                  <button className="w-full bg-slate-600 py-3 mt-10 text-white flex items-center justify-center gap-3 text-xl font-bold rounded-md" onClick={() => addToCart(product)}>
-                    <ShoppingCart />
-                    Add To cart
-                  </button>
+              <div className="p-4">
+                <h1 className="text-lg font-semibold text-gray-800 truncate">
+                  {product.name}
+                </h1>
+                <h3>
+                  Category :{" "}
+                  <span className="bg-slate-600 font-mono text-white px-3 py-1 rounded-full ">
+                    {" "}
+                    {product.merchant}
+                  </span>
+                </h3>
+                <div className="flex items-center my-2">
+                  <span className="text-red-500 font-bold">
+                    Rp:{product.price}
+                  </span>
                 </div>
+                <button
+                  className="w-full bg-green-500 py-2 text-white flex items-center justify-center gap-3 text-lg font-bold rounded-md"
+                  onClick={() => addToCart(product)}
+                >
+                  <ShoppingCart />
+                  Add To cart
+                </button>
               </div>
             </div>
           ))}
