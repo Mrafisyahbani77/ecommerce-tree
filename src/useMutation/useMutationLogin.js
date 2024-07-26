@@ -4,10 +4,9 @@ import { AxiosInstance } from '../AxiosInstance';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 export const useMutationLogin = () => {
   const [onSubmit, setOnSubmit] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { mutate } = useMutation({
     mutationKey: ['login'],
     mutationFn: async (data) => {
@@ -16,19 +15,21 @@ export const useMutationLogin = () => {
       const {
         success,
         role,
+        user_id,
         token,
         permissions,
         user: { email, username },
-      } = response.data
+      } = response.data;
       console.log(response.data);
       if (success) {
-     localStorage.setItem('username', username)
-     localStorage.setItem('email', email)
-     localStorage.setItem('token', token)
-     localStorage.setItem('permission', permissions)
-     localStorage.setItem('role', role)
+        localStorage.setItem('username', username);
+        localStorage.setItem('email', email);
+        localStorage.setItem('token', token);
+        localStorage.setItem('permission', permissions);
+        localStorage.setItem('role', role);
+        localStorage.setItem('user_id', user_id);
       }
- if(role.includes('admin')) {
+      if (role.includes('admin')) {
         navigate('/adminDashboard');
       } else {
         navigate('/userDashboard');
@@ -41,7 +42,6 @@ export const useMutationLogin = () => {
         position: 'top-right',
         duration: 3000,
       });
-    
     },
 
     onError: () => {

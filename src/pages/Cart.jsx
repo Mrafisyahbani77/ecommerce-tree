@@ -48,11 +48,26 @@ export default function Cart() {
   }, 0);
 
   if (isFetching || isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <div className="flex justify-center min-h-screen items-center w-full h-full">
+          <div className="animate-spin rounded-full border-t-4 border-green-700 border-opacity-25 w-24 h-24"></div>
+        </div>
+      </>
+    );
   }
 
   if (isError) {
-    return <div>Error loading cart items</div>;
+    return (
+      <div className="font-bold text-center flex items-center justify-center min-h-screen max-w-2xl container">
+      <div>
+          <h1 className="text-xl">Anda Tidak Bisa Membuka Halaman ini sebelum Login</h1>
+          <Link to="/login" className="mt-5 block text-white rounded-lg bg-yellow-300 py-3 px-5 text-lg ">
+            Login Disini
+          </Link>
+      </div>
+      </div>
+    );
   }
 
   return (

@@ -8,6 +8,7 @@ import NotFoud from '../pages/NotFoud';
 import { useFetch } from '../useFetchProduct/useFetch';
 import { AppContext, AppProvider } from '../store/context';
 import Profile from '../pages/Profile';
+import WishList from '../pages/WishList';
 
 export default function RouterApp() {
   const {data} = useFetch()
@@ -20,6 +21,7 @@ export default function RouterApp() {
       <Route path="/register" element={<Register />} />
       <Route path="/userDashboard" element={<UserDashboard />} />
       <Route path="/Profile" element={<Profile />} />
+      <Route path="/WishList" element={<WishList />} />
       {/* <Route path="/contact" element={<Contact />} />*/}
       <Route path="*" element={<NotFoud />} />  
     </Routes>

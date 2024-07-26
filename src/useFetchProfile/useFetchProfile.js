@@ -5,15 +5,17 @@ export const useFetchProfile = () => {
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['fetch.profile'],
     queryFn: async () => {
-      const response = await AxiosInstance.get('profiles/');
-      const {data : data} = response
-      console.log(data.data);
-      return data.data;
+      const response = await AxiosInstance.get(`profiles/${localStorage.getItem('user_id')}`);
+      const { data: data } = response;
+      console.log(data);
+      return data;
     },
   });
 
   return {
     data,
-    isLoading, isFetching, error
+    isLoading,
+    isFetching,
+    error,
   };
 };
