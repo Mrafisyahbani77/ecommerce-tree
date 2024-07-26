@@ -74,7 +74,7 @@ export default function Cart() {
                   <div className="flex flex-col items-center">
                     <img src={Keranjang} alt="Empty Cart" className="md:w-24 md:h-24 w-24 h-24 md:mr-4" />
                     <p className="font-semibold text-sm md:text-lg">Wah, keranjang belanjamu kosong</p>
-                    <p className="text-gray-500">Yuk, isi dengan barang-barang impianmu!</p>
+                    <p className="text-gray-500 md:text-md text-xs">Yuk, isi dengan barang-barang impianmu!</p>
                     <Link to="/">
                       <button className="mt-4 hover:bg-green-700 py-1 px-2 text-sm md:text-md bg-green-500 text-white md:px-4 md:py-2 rounded-lg">Mulai Belanja</button>
                     </Link>

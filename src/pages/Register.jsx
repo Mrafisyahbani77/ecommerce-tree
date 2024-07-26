@@ -43,7 +43,7 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const { mutate } = useMutationRegister();
+  const { mutate, onSubmit } = useMutationRegister();
 
   return (
     <div className="background-color">
@@ -133,7 +133,7 @@ const Register = () => {
               type="submit"
               className="w-full font-semibold bg-indigo-500  text-xl py-3 rounded-md text-white hover:bg-indigo-700 transition duration-300 ease-in-out shadow-xl shadow-indigo-300"
             >
-              Submit
+              {onSubmit ? "Register..." : "Register"}
             </button>
             <div className="w-full md:px-3 text-lg">
               {" "}
