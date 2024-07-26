@@ -35,9 +35,7 @@ const NavLinks = () => {
         Cart
       </NavLink>
       <NavLink to="/Profile" className="px-5 w-full text-black flex items-center justify-center gap-5">
-        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="person" className="w-10 h-18 rounded-full " />
-        <span className="text-xs">|</span>
-        <h1 className="text-sm">Hafidz</h1>
+        <h1 className="text-md bg-gray-200 px-2 py-1 rounded-xl hover:bg-gray-400">Profile</h1>
       </NavLink>
 
       <button onClick={handelLogout} type="submit" className="text-black w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2">
