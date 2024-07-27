@@ -2,12 +2,15 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { AxiosInstance } from '../AxiosInstance';
 import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 export const useMutationRegister = () => {
   const navigate = useNavigate();
+  const [onSubmit, setOnSubmit] = useState(false);
   const { mutate } = useMutation({
     mutationKey: ['register'],
     mutationFn: async (data) => {
+      setOnSubmit(true);
       const response = await AxiosInstance.post('/register', data);
       console.log(response);
       return response;
@@ -21,5 +24,5 @@ export const useMutationRegister = () => {
     },
   });
 
-  return { mutate };
+  return { mutate, onSubmit };
 };
