@@ -10,7 +10,7 @@ export default function Profile() {
     setIsVisible(!isVisible);
   };
 
-  const { data: profile, isFetching, isLoading, error } = useFetchProfile();
+  const { data: profile, isFetching, isLoading, error, refetch } = useFetchProfile();
 
   if (isLoading || isFetching) {
     return <div>Loading...</div>;
@@ -39,8 +39,8 @@ export default function Profile() {
             <div className="w-full px-4">
               <h1 className="text-xl font-semibold mb-10 lg:text-4xl">Biodata Diri</h1>
               <div className="flex items-center gap-4">
-                <div className="w-32 lg:w-56 border-2 border-black rounded-full object-cover object-center h-auto overflow-auto">
-                  <img src={`http://127.0.0.1:8000${profile.profiles.photo}`} alt={profile.profiles.username} />
+                <div className="block relative">
+                  <img src={`http://127.0.0.1:8000${profile.profiles.photo}`} alt={profile.profiles.username} className='object-cover w-32 h-32 border-slate-800 border-2 lg:w-48 lg:h-48 rounded-full custom-position' />
                 </div>
                 <div>
                   <h1 className="text-lg font-medium lg:text-3xl">{profile.profiles.username}</h1>
@@ -53,7 +53,7 @@ export default function Profile() {
               </div>
               <button
                 onClick={toggleModal}
-                className="mt-10 w-full max-w-lg mx-auto bg-slate-800 py-3 rounded-md font-semibold hover:bg-slate-400 text-white shadow-slate-300 shadow-2xl transition duration-300 ease-in-out flex justify-center my-5"
+                className="mt-10 w-full max-w-lg md:w-full mx-auto bg-slate-800 py-3 rounded-md font-semibold hover:bg-slate-400 text-white shadow-slate-300 shadow-2xl transition duration-300 ease-in-out flex justify-center my-5"
               >
                 Edit Profile
               </button>
@@ -61,7 +61,7 @@ export default function Profile() {
           </div>
         </div>
       </section>
-      <Modal isVisible={isVisible} visible={setIsVisible} toggleModal={toggleModal} />
+      <Modal isVisible={isVisible} visible={setIsVisible} toggleModal={toggleModal} refetch={refetch} />
     </>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { UseMutationProfile } from '../useMutation/useMutationProfile';
 
-export default function Modal({ isVisible, toggleModal }) {
+export default function Modal({ isVisible, toggleModal, refetch }) {
   const {
     register,
     handleSubmit,
@@ -15,6 +15,7 @@ export default function Modal({ isVisible, toggleModal }) {
     return null;
   }
 
+
   const onSubmit = (data) => {
     // Create a new FormData object
     const formData = new FormData();
@@ -23,7 +24,7 @@ export default function Modal({ isVisible, toggleModal }) {
     formData.append('no_telp', data.no_telp);
     formData.append('photo', data.photo[0]); // Ensure the
 
-    mutate(formData);
+    mutate(formData, refetch);
     isVisible;
     reset();
   };
