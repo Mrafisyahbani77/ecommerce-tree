@@ -10,6 +10,7 @@ import { AppContext, AppProvider } from '../store/context';
 import Profile from '../pages/Profile';
 import WishList from '../pages/WishList';
 
+
 export default function RouterApp() {
   const {data} = useFetch()
   return (

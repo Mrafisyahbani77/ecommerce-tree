@@ -74,7 +74,7 @@ const Banner = () => {
       >
         {data?.data.map((banner, index) => (
           <div key={index} className="relative">
-            <img className="w-full lg:h-[80vh] lg:object-center md:h-[350px] h-[ rounded-xl object-cover" src={`http://127.0.0.1:8000/storage/${banner.image_path}`} alt={banner.title} />
+            <img className="w-full lg:h-[60vh] lg:object-center md:h-[350px] h-[ rounded-xl object-cover" src={`http://127.0.0.1:8000/storage/${banner.image_path}`} alt={banner.title} />
             <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black to-transparent w-full flex justify-between items-center">
               <div>
                 <h1 className="text-white text-xl font-bold">{banner.title}</h1>
