@@ -40,7 +40,7 @@ export default function Profile() {
               <h1 className="text-xl font-semibold mb-10 lg:text-4xl">Biodata Diri</h1>
               <div className="flex items-center gap-4">
                 <div className="block relative">
-                  <img src={`http://127.0.0.1:8000${profile.profiles.photo}`} alt={profile.profiles.username} className='object-cover w-32 h-32 border-slate-800 border-2 lg:w-48 lg:h-48 rounded-full custom-position' />
+                  <img src={`http://127.0.0.1:8000${profile.profiles.photo}`} alt={profile.profiles.username} className="object-cover w-32 h-32 border-slate-800 border-2 lg:w-48 lg:h-48 rounded-full custom-position" />
                 </div>
                 <div>
                   <h1 className="text-lg font-medium lg:text-3xl">{profile.profiles.username}</h1>

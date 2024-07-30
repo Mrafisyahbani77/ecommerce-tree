@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useFetch } from "../useFetchProduct/useFetch";
 import Banner from "./Banner";
-import { ShoppingCart } from "lucide-react";
+import { Bookmark, ShoppingCart } from "lucide-react";
 import { AppContext } from "../store/context";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosInstance } from "../AxiosInstance";
@@ -75,13 +75,16 @@ const Product = () => {
                     Rp:{product.price}
                   </span>
                 </div>
-                <button
-                  className="w-full bg-green-500 py-2 text-white flex items-center justify-center gap-3 text-lg font-bold rounded-md"
-                  onClick={() => addToCart(product)}
-                >
-                  <ShoppingCart />
-                  Add To cart
-                </button>
+               <div className="flex items-center justify-center">
+                  <button
+                    className="w-full bg-green-500 py-2 text-white flex items-center justify-center gap-3 text-lg font-bold rounded-md"
+                    onClick={() => addToCart(product)}
+                  >
+                    <ShoppingCart />
+                    Add To cart
+                  </button>
+                    <Bookmark/>
+               </div>
               </div>
             </div>
           ))}
