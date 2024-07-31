@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { UseMutationProfile } from '../useMutation/useMutationProfile';
 
-export default function Modal({ isVisible, toggleModal, refetch }) {
+export default function Modal({ isVisible, toggleModal, refetch , visible}) {
   const {
     register,
     handleSubmit,
@@ -27,6 +27,7 @@ export default function Modal({ isVisible, toggleModal, refetch }) {
     mutate(formData, refetch);
     isVisible;
     reset();
+    visible()
   };
 
   const handleFileChange = (e) => {
