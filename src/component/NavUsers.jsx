@@ -34,6 +34,9 @@ const NavLinks = () => {
       <NavLink to="/cart" className="text-black w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2">
         Cart
       </NavLink>
+      <NavLink to="/Wishlist" className="text-black w-full text-center rounded-md transition duration-300 ease-in-out hover:py-2 py-2">
+        Wishlist
+      </NavLink>
       <NavLink to="/Profile" className="px-5 w-full text-black flex items-center justify-center gap-5">
         <h1 className="text-md bg-gray-200 px-2 py-1 rounded-xl hover:bg-gray-400">Profile</h1>
       </NavLink>

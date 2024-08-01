@@ -12,7 +12,6 @@ import WishList from '../pages/WishList';
 
 
 export default function RouterApp() {
-  const {data} = useFetch()
   return (
     <AppProvider>
     <Routes>
@@ -22,7 +21,7 @@ export default function RouterApp() {
       <Route path="/register" element={<Register />} />
       <Route path="/userDashboard" element={<UserDashboard />} />
       <Route path="/Profile" element={<Profile />} />
-      <Route path="/WishList" element={<WishList />} />
+      <Route path="/Wishlist" element={<WishList />} />
       {/* <Route path="/contact" element={<Contact />} />*/}
       <Route path="*" element={<NotFoud />} />  
     </Routes>

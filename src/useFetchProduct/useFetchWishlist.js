@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosInstance } from '../AxiosInstance';
 
 export const useFetchWishlist = () => {
-  const { data, isLoading, isError, error, isFetching } = useQuery({
+  const { data, isLoading, isError, refetch, error, isFetching } = useQuery({
     queryKey: ['fetch.wishlist'],
     queryFn: async () => {
       const response = await AxiosInstance.get('wishlists/');
@@ -11,6 +11,11 @@ export const useFetchWishlist = () => {
     },
   });
   return {
-    data,isLoading, isError, error, isFetching
+    data,
+    isLoading,
+    isError,
+    error,
+    isFetching,
+    refetch
   };
 };

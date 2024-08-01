@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modal from '../component/Modal';
 import Navbar from '../component/NavbarUsers';
 import { useFetchProfile } from '../useFetchProfile/useFetchProfile';
+import Loading from '../component/Loading';
 
 export default function Profile() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,7 +14,11 @@ export default function Profile() {
   const { data: profile, isFetching, isLoading, error, refetch } = useFetchProfile();
 
   if (isLoading || isFetching) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   if (error) {
