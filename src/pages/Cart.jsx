@@ -6,6 +6,7 @@ import { useCreateOrderAndPay } from "../useFetchPayment/useCreateOrderAndPay";
 import NavbarUser from "../component/NavbarUsers";
 import Keranjang from "../assets/Image/Ker.png";
 import Diskon from "../assets/Image/dis.png";
+import Loading from "../component/Loading";
 
 export default function Cart() {
   const [loading, setLoading] = useState(true);
@@ -95,9 +96,7 @@ export default function Cart() {
 
   if (isFetching || isLoading) {
     return (
-      <div className="flex justify-center min-h-screen items-center w-full h-full">
-        <div className="animate-spin rounded-full border-t-4 border-green-700 border-opacity-25 w-24 h-24"></div>
-      </div>
+     <Loading/>
     );
   }
 
