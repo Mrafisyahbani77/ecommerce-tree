@@ -3,6 +3,9 @@ import Modal from '../component/Modal';
 import Navbar from '../component/NavbarUsers';
 import { useFetchProfile } from '../useFetchProfile/useFetchProfile';
 import Loading from '../component/Loading';
+import { FaClipboardUser } from 'react-icons/fa6';
+import { MdPhoneAndroid } from 'react-icons/md';
+import { Mail } from 'lucide-react';
 
 export default function Profile() {
   const [isVisible, setIsVisible] = useState(false);

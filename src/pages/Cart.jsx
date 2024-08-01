@@ -7,15 +7,6 @@ import NavbarUser from '../component/NavbarUsers';
 import Keranjang from '../assets/Image/Ker.png';
 import Diskon from '../assets/Image/dis.png';
 import Loading from '../component/Loading';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useFetchCart } from '../useFetchProduct/useFetch';
-import { useFetchPay } from '../useFetchPayment/useFetchPay';
-import { useCreateOrderAndPay } from '../useFetchPayment/useCreateOrderAndPay';
-import NavbarUser from '../component/NavbarUsers';
-import Keranjang from '../assets/Image/Ker.png';
-import Diskon from '../assets/Image/dis.png';
-import Loading from '../component/Loading';
 
 export default function Cart() {
   const [loading, setLoading] = useState(true);
