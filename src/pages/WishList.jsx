@@ -1,16 +1,16 @@
 import React from 'react';
 import NavbarUsers from '../component/NavbarUsers';
-import Product from './Product';
 import { useFetchWishlist } from '../useFetchProduct/useFetchWishlist';
 import { useDeletedWishlist } from '../useWishlistProduct/useDeletedWishlist';
 import { Trash } from 'lucide-react';
 import Loading from '../component/Loading';
 import toast from 'react-hot-toast';
+import Loader from '../component/Loader';
 // import { useDeletedWishlist } from '../useWishlistProduct/useDeletedWishlist';
 
 export default function WishList() {
   // QUERYING WISHLIST
-  const { mutate } = useDeletedWishlist();
+  const { mutate, isPending } = useDeletedWishlist();
   const { data, isLoading, isError, error, isFetching, refetch } = useFetchWishlist();
 
   if (isLoading || isFetching) {
@@ -38,7 +38,7 @@ export default function WishList() {
         onSuccess: () => {
           refetch();
           toast.success('Product Deleted', {
-            position : "top-left",
+            position: 'top-right',
             duration: 3000,
           });
         },
@@ -64,10 +64,17 @@ export default function WishList() {
                   </h3>
                   <div className="items-center justify-center gap-5 mt-5 font-xl font-semibold md:flex">
                     <button className="bg-primary py-3 w-full my-5 rounded-md text-white md:w-1/2">Add To Cart</button>
-                    <button onClick={() => handleClickDeleted(wishlist.id)} className="w-full md:w-1/2 ring-1 ring-red-500 py-3 rounded-md hover:bg-red-600 transition duration-300 ease-in-out text-sm gap-1 flex justify-center items-center">
-                      <Trash />
-                      Hapus Wishlist
-                    </button>
+                    {isPending ? (
+                      <Loader />
+                    ) : (
+                      <button
+                        onClick={() => handleClickDeleted(wishlist.id)}
+                        className="w-full md:w-1/2 ring-1 ring-red-500 py-3 rounded-md hover:bg-red-600 hover:text-white transition duration-300 ease-in-out text-sm gap-1 flex justify-center items-center"
+                      >
+                        <Trash />
+                        Hapus Wishlist
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

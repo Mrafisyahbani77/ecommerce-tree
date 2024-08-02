@@ -9,10 +9,9 @@ const App = () => {
       <Toaster
         toastOptions={{
           style: {
-            border: '1px solid #713200',
-            padding: '16px',
-            color: '#713200',
-          }
+            border: '1px solid gray',
+            padding: '10px',
+          },
         }}
       />
     </>

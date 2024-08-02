@@ -7,6 +7,7 @@ import NavbarUser from '../component/NavbarUsers';
 import Keranjang from '../assets/Image/Ker.png';
 import Diskon from '../assets/Image/dis.png';
 import Loading from '../component/Loading';
+import Loader from '../component/Loader';
 
 export default function Cart() {
   const [loading, setLoading] = useState(true);
@@ -154,7 +155,7 @@ export default function Cart() {
               </>
             )}
           </div>
-          <div className="bg-white shadow-md rounded-lg p-6 md:max-w-lg w-full md:w-auto">
+          <div className="bg-white lg:fixed md:w-full lg:w-auto lg:right-16 shadow-md rounded-lg p-6 md:max-w-lg w-full">
             <p className="font-semibold text-lg">Ringkasan belanja</p>
             <div className="flex justify-between mt-4">
               <span className="text-gray-500">Total</span>
@@ -166,14 +167,7 @@ export default function Cart() {
               <span className="ml-auto md:ml-auto">&gt;</span>
             </div>
             <button className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md w-full" onClick={handleButtonClick} disabled={buttonLoading || isPopupOpen}>
-              {buttonLoading ? (
-                <svg className="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : (
-                'Bayar'
-              )}
+              {buttonLoading ? <Loader /> : 'Bayar'}
             </button>
           </div>
         </div>

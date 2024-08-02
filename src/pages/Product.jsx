@@ -26,10 +26,22 @@ const Product = () => {
       // Update the cart in context or any other state management
       dispatch({ type: 'ADD_TO_CART', payload: data });
     },
+    onError: (error) => {
+      if (error.response && error.response.status === 409) {
+        toast.error('Product Already in cart', {
+          position: 'top-right',
+          duration: 3000,
+        });
+      } else {
+        toast.error('Harap Login Terlebih Dahulu', {
+          position: 'top-right',
+          duration: 3000,
+        });
+      }
+    },
   });
 
   const addToCart = (product) => {
-    toast.success('Product Added');
     mutation.mutate(product);
   };
 
@@ -38,14 +50,30 @@ const Product = () => {
   const { mutate, isError, isPending } = useMutationWishlist();
 
   const addToWishList = (id) => {
-    toast.success('SUCCESSS', {
-      position: 'top-center',
-      duration: 3000,
+    mutate(id, {
+      onSuccess: () => {
+        toast.success('Product Added to Wishlist', {
+          position: 'top-right',
+          duration: 3000,
+        });
+      },
+      onError: (error) => {
+        if (error.response && error.response.status === 409) {
+          toast.error('Product Already in Wishlist', {
+            position: 'top-right',
+            duration: 3000,
+          });
+        } else {
+          toast.error('Harap Login Terlebih Dahulu', {
+            position: 'top-right',
+            duration: 3000,
+          });
+        }
+      },
     });
-    mutate(id);
   };
 
-  if (isLoading || isPending) {
+  if (isLoading) {
     return (
       <div>
         <Loading />
@@ -55,10 +83,6 @@ const Product = () => {
 
   if (error) {
     return <div>{error.message}</div>;
-  }
-
-  if (isError) {
-    return <div>Error Occured While Adding to Wishlist</div>;
   }
 
   return (
@@ -83,12 +107,23 @@ const Product = () => {
                 </div>
                 <div className="flex items-center justify-center">
                   <button className="w-full bg-green-500 py-2 text-white flex items-center justify-center gap-3 text-lg font-bold rounded-md" onClick={() => addToCart(product)}>
-                    <ShoppingCart />
-                    Add To cart
+                    {mutation.isPending ? (
+                      <Loader />
+                    ) : (
+                      <>
+                        <ShoppingCart />
+                        <h1>Add To Cart</h1>
+                      </>
+                    )}
                   </button>
-                  <button onClick={() => addToWishList(product.id)}>
-                    <Bookmark className="ring-1 ring-black rounded-md ml-3 h-10 w-7" />
-                  </button>
+
+                  {isPending ? (
+                    <Loader />
+                  ) : (
+                    <button onClick={() => addToWishList(product.id)}>
+                      <Bookmark className="ring-1 ring-black rounded-md ml-3 h-10 w-7" />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

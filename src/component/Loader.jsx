@@ -3,7 +3,7 @@ export default function Loader({ size }) {
 
   return (
     <div className="flex justify-center items-center">
-      <div className={`animate-spin rounded-full border-t-4 border-slate-200 border-opacity-25 ${loaderSize}`}></div>
+      <div className={`animate-spin rounded-full border-t-4 border-slate-800 border-opacity-25 ${loaderSize}`}></div>
     </div>
   );
 }
