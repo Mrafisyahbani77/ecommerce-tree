@@ -6,7 +6,6 @@ export const useFetch = () => {
     queryKey: ['fetch.products'],
     queryFn: async () => {
       const response = await AxiosInstance.get('products/');
-      // console.log(response.data.data);
       return response.data.data;
     },
   });

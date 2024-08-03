@@ -10,6 +10,7 @@ import { AppContext, AppProvider } from '../store/context';
 import Profile from '../pages/Profile';
 import WishList from '../pages/WishList';
 import Address from '../pages/Address';
+import AdminDashboard from '../pages/Admin/AdminDashboard';
 
 export default function RouterApp() {
   return (
@@ -24,7 +25,12 @@ export default function RouterApp() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Wishlist" element={<WishList />} />
         <Route path="/Address" element={<Address />} />
-        {/* <Route path="/contact" element={<Contact />} />*/}
+        {/* Bisa Tambahkan disini pages user lagi */}
+        {/* USER PAGES */}
+
+        {/* ADMIN PAGES */}
+        <Route path="/adminDashboard" element={<AdminDashboard />} />
+        {/* ADMIN PAGES */}
         <Route path="*" element={<NotFoud />} />
       </Routes>
     </AppProvider>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useFetchBanner } from '../useFetchComponent/useFetchBanner';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Loader from '../component/Loader';
 
 const CustomLeftArrow = ({ onClick }) => {
   return (
@@ -46,16 +47,16 @@ const Banner = () => {
     },
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>{error.message}</div>;
   }
 
-  if (isFetching) {
-    return <div>Fetching...</div>;
+  if (isFetching || isLoading) {
+    return (
+      <div className='pt-32'>
+        <Loader />
+      </div>
+    );
   }
 
   return (

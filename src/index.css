@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 .hover\:shadow-gradient-to-l:hover {
-  box-shadow: 0 4px 6px -1px rgba(171, 64, 244, 0.7),
-    0 2px 4px -2px rgba(171, 64, 244, 0.7),
-    0 4px 6px -1px rgba(0, 206, 201, 0.7), 0 2px 4px -2px rgba(0, 206, 201, 0.7);
+  box-shadow: 0 4px 6px -1px rgba(171, 64, 244, 0.7), 0 2px 4px -2px rgba(171, 64, 244, 0.7), 0 4px 6px -1px rgba(0, 206, 201, 0.7), 0 2px 4px -2px rgba(0, 206, 201, 0.7);
 }
 
 .background-color {
@@ -42,7 +40,6 @@
   animation: slideInRight 0.5s forwards;
 }
 
-
 .checkbox-green {
   appearance: none;
   background-color: #fff;
@@ -54,12 +51,12 @@
 }
 
 .checkbox-green:checked {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
+  background-color: #4caf50;
+  border-color: #4caf50;
 }
 
 .kecil {
-  font-size:10px;
+  font-size: 10px;
 }
 
 .checkbox-green:checked::after {
@@ -74,4 +71,8 @@
 
 .custom-position {
   object-position: 60% -3px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
 }
