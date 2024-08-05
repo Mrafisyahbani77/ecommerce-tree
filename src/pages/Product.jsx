@@ -94,8 +94,8 @@ const Product = () => {
         <hr />
         <div className="md:grid grid-cols-2 mt-10 lg:grid lg:grid-cols-3 max-w-full">
           {products?.map((product) => (
-           <Link to=''>
-              <div key={product.id} className="rounded-md mb-10 bg-white shadow-lg p-5 mx-auto max-w-xs border border-gray-200">
+           <Link to='' key={product.id}>
+              <div  className="rounded-md mb-10 bg-white shadow-lg p-5 mx-auto max-w-xs border border-gray-200">
                 <div className="relative">
                   <img src={product.image_url} alt={product.name} className="object-cover rounded-t-md w-full h-48" />
                 </div>

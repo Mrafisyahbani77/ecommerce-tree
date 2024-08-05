@@ -1,14 +1,30 @@
-import React from 'react';
-import { AppBar, Box, CssBaseline, Drawer, IconButton, Toolbar, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import { MenuIcon } from 'lucide-react';
-import { styled } from '@mui/material/styles';
-import { tableCellClasses } from '@mui/material/TableCell';
-import { useFetch } from '../../useFetchProduct/useFetch';
-import Loader from '../../component/Loader';
-import { useDeletedProduct } from '../../useMutation/useMutationProduct';
-import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
-import SidebarAdmin from '../../component/SidebarAdmin';
+import React from "react";
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
+import { MenuIcon } from "lucide-react";
+import { styled } from "@mui/material/styles";
+import { tableCellClasses } from "@mui/material/TableCell";
+import { useFetch } from "../../useFetchProduct/useFetch";
+import Loader from "../../component/Loader";
+import { useDeletedProduct } from "../../useMutation/useMutationProduct";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import SidebarAdmin from "../../component/SidebarAdmin";
 
 const drawerWidth = 240;
 
@@ -23,10 +39,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -54,14 +70,16 @@ const AdminDashboard = () => {
   };
 
   const handleDeleteProduct = (ProductId) => {
-    const confirmDeleted = confirm('Are you sure you want to delete this product');
+    const confirmDeleted = confirm(
+      "Are you sure you want to delete this product"
+    );
 
     if (confirmDeleted) {
       mutate(ProductId, {
         onSuccess: () => {
           refetch();
-          toast.success('Product deleted successfully', {
-            position: 'top-right',
+          toast.success("Product deleted successfully", {
+            position: "top-right",
             duration: 3000,
           });
         },
@@ -73,7 +91,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', overflow: 'hidden' }}>
+    <Box sx={{ display: "flex", overflow: "hidden" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -82,16 +100,30 @@ const AdminDashboard = () => {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar className="sm:hidden">
-          <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2, display: { sm: 'none' } }}>
+        <Toolbar className="sm:hidden bg-slate-100">
+          <IconButton
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <Typography
+            className="font-semibold text-black"
+            variant="h7"
+            noWrap
+            component="div"
+          >
+            Ecommerce Tree
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="mailbox folders">
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
+      >
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -101,8 +133,12 @@ const AdminDashboard = () => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, overflow: 'hidden' },
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              overflow: "hidden",
+            },
           }}
         >
           <SidebarAdmin />
@@ -110,8 +146,12 @@ const AdminDashboard = () => {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, overflow: 'hidden' },
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              overflow: "hidden",
+            },
           }}
           open
         >
@@ -119,16 +159,43 @@ const AdminDashboard = () => {
         </Drawer>
       </Box>
 
-      <Box component="main" sx={{ overflow: 'hidden', flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
-        <h1 className="mt-12 lg:mt-5 mb-5 lg:px-4 text-xl lg:text-2xl font-bold">List Produk Yang Tersedia</h1>
+      <Box
+        component="main"
+        sx={{
+          overflow: "hidden",
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <div className="flex my-5 md:flex flex-col md:flex-row justify-between items-center">
+          <h1 className="mt-12 lg:mt-5 mb-5 lg:px-4 text-xl lg:text-2xl font-bold">
+            List Produk Yang Tersedia
+          </h1>
+          <Link to="/adminDashboard/CreateProduct">
+            <Button
+              className="mt-4 md:mt-10 lg:mt-2 text-sm md:text-md"
+              variant="contained"
+            >
+              Tambah Product
+            </Button>
+          </Link>
+        </div>
         {isLoading ? (
           <Loader />
         ) : (
-          <TableContainer component={Paper} sx={{ maxHeight: '70vh', overflowY: 'auto' }}>
-            <Table stickyHeader sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableContainer
+            component={Paper}
+            sx={{ maxHeight: "70vh", overflowY: "auto" }}
+          >
+            <Table
+              stickyHeader
+              sx={{ minWidth: 700 }}
+              aria-label="customized table"
+            >
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>Image</StyledTableCell>
+                  <StyledTableCell align="center">Image</StyledTableCell>
                   <StyledTableCell align="center">Nama Produk</StyledTableCell>
                   <StyledTableCell align="right">Kategori</StyledTableCell>
                   <StyledTableCell align="right">Harga</StyledTableCell>
@@ -138,9 +205,13 @@ const AdminDashboard = () => {
               </TableHead>
               <TableBody>
                 {data.map((product) => (
-                  <StyledTableRow key={product.id}>
+                  <StyledTableRow className="" key={product.id}>
                     <StyledTableCell component="th" scope="row">
-                      <img src={product.image_url} alt={product.name} className="object-cover rounded-t-md w-full h-24" />
+                      <img
+                        src={product.image_url}
+                        alt={product.name}
+                        className="object-cover rounded-t-md w-full h-24"
+                      />
                     </StyledTableCell>
                     <StyledTableCell align="center" className="font-semibold">
                       {product.name}
@@ -155,10 +226,17 @@ const AdminDashboard = () => {
                       {product.status}
                     </StyledTableCell>
                     <StyledTableCell align="right" className="font-semibold">
-                      <button className="mr-5" onClick={() => alert(`edited Product wiht id ${product.id}`)}>
+                      <button
+                        className="mr-5"
+                        onClick={() =>
+                          alert(`edited Product wiht id ${product.id}`)
+                        }
+                      >
                         Edit
                       </button>
-                      <button onClick={() => handleDeleteProduct(product.id)}>Hapus</button>
+                      <button onClick={() => handleDeleteProduct(product.id)}>
+                        Hapus
+                      </button>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -166,13 +244,6 @@ const AdminDashboard = () => {
             </Table>
           </TableContainer>
         )}
-        <div>
-          <Link to="/adminDashboard/CreateProduct">
-            <Button className="mt-5" variant="contained">
-              Tambah Product
-            </Button>
-          </Link>
-        </div>
       </Box>
     </Box>
   );
