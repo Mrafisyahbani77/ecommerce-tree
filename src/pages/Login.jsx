@@ -98,7 +98,7 @@ const Login = () => {
                   id="password"
                   {...register('password')}
                   className="block w-full px-3 py-2 mt-1 border-slate-500 border-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required
+             
                 />
                 <button type="button" onClick={handleTogglePassword} className="absolute inset-y-0 right-0 px-3 py-2 focus:outline-none">
                   {showPassword ? <Eye className="w-4" /> : <EyeOff className="w-4" />}
