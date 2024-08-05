@@ -7,7 +7,7 @@ export const useFetchBanner = () => {
     queryFn: async () => {
       const response = await axios.get('http://127.0.0.1:8000/api/banners/');
       console.log(response.data);
-      return response;
+      return response.data;
     },
   });
   return {
@@ -17,4 +17,3 @@ export const useFetchBanner = () => {
     error,
   };
 };
-

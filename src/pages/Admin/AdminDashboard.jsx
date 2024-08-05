@@ -1,33 +1,14 @@
-import React, { useEffect } from 'react';
-import {
-  AppBar,
-  Box,
-  CssBaseline,
-  Divider,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Typography,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from '@mui/material';
-import { InboxIcon, MailIcon, MenuIcon } from 'lucide-react';
+import React from 'react';
+import { AppBar, Box, CssBaseline, Drawer, IconButton, Toolbar, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { MenuIcon } from 'lucide-react';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import { useFetch } from '../../useFetchProduct/useFetch';
-import { AxiosInstance } from '../../AxiosInstance';
 import Loader from '../../component/Loader';
+import { useDeletedProduct } from '../../useMutation/useMutationProduct';
+import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import SidebarAdmin from '../../component/SidebarAdmin';
 
 const drawerWidth = 240;
 
@@ -50,19 +31,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const createData = (name, calories, fat, carbs, protein) => {
-  return { name, calories, fat, carbs, protein };
-};
-
 const AdminDashboard = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-  const [data, setData] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
-  const { isLoading, error } = useFetch();
+  const { isLoading, refetch, data } = useFetch();
+  const { mutate } = useDeletedProduct();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -80,48 +54,26 @@ const AdminDashboard = () => {
   };
 
   const handleDeleteProduct = (ProductId) => {
-    alert('Delete Product With ID' + ProductId);
+    const confirmDeleted = confirm('Are you sure you want to delete this product');
+
+    if (confirmDeleted) {
+      mutate(ProductId, {
+        onSuccess: () => {
+          refetch();
+          toast.success('Product deleted successfully', {
+            position: 'top-right',
+            duration: 3000,
+          });
+        },
+        onError: (error) => {
+          alert(error.message);
+        },
+      });
+    }
   };
-
-  const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List>
-        {['Create Product', 'Banner', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
-  const FetchingData = async () => {
-    const response = await AxiosInstance.get('products');
-    setData(response.data.data);
-  };
-
-  useEffect(() => {
-    FetchingData();
-  }, []);
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', overflow: 'hidden' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -130,7 +82,7 @@ const AdminDashboard = () => {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar className="lg:hidden">
+        <Toolbar className="sm:hidden">
           <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2, display: { sm: 'none' } }}>
             <MenuIcon />
           </IconButton>
@@ -150,25 +102,25 @@ const AdminDashboard = () => {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, overflow: 'hidden' },
           }}
         >
-          {drawer}
+          <SidebarAdmin />
         </Drawer>
         <Drawer
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, overflow: 'hidden' },
           }}
           open
         >
-          {drawer}
+          <SidebarAdmin />
         </Drawer>
       </Box>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
-        <h1 className="mt-12 mb-5 lg:px-4 text-xl lg:text-2xl font-bold">List Produk Yang Tersedia</h1>
+      <Box component="main" sx={{ overflow: 'hidden', flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+        <h1 className="mt-12 lg:mt-5 mb-5 lg:px-4 text-xl lg:text-2xl font-bold">List Produk Yang Tersedia</h1>
         {isLoading ? (
           <Loader />
         ) : (
@@ -203,7 +155,9 @@ const AdminDashboard = () => {
                       {product.status}
                     </StyledTableCell>
                     <StyledTableCell align="right" className="font-semibold">
-                      <button className="mr-5">Edit</button>
+                      <button className="mr-5" onClick={() => alert(`edited Product wiht id ${product.id}`)}>
+                        Edit
+                      </button>
                       <button onClick={() => handleDeleteProduct(product.id)}>Hapus</button>
                     </StyledTableCell>
                   </StyledTableRow>
@@ -213,9 +167,11 @@ const AdminDashboard = () => {
           </TableContainer>
         )}
         <div>
-          <Button className="mt-5" variant="contained" onClick={() => alert('Product Added')}>
-            Tambah Product
-          </Button>
+          <Link to="/adminDashboard/CreateProduct">
+            <Button className="mt-5" variant="contained">
+              Tambah Product
+            </Button>
+          </Link>
         </div>
       </Box>
     </Box>

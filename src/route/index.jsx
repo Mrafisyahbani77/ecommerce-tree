@@ -11,6 +11,8 @@ import Profile from '../pages/Profile';
 import WishList from '../pages/WishList';
 import Address from '../pages/Address';
 import AdminDashboard from '../pages/Admin/AdminDashboard';
+import CreateProduct from '../pages/Admin/CreateProduct';
+import BannerCrud from '../pages/Admin/BannerCrud';
 
 export default function RouterApp() {
   return (
@@ -30,6 +32,8 @@ export default function RouterApp() {
 
         {/* ADMIN PAGES */}
         <Route path="/adminDashboard" element={<AdminDashboard />} />
+        <Route path="/adminDashboard/CreateProduct" element={<CreateProduct />} />
+        <Route path="/Banner" element={<BannerCrud />} />
         {/* ADMIN PAGES */}
         <Route path="*" element={<NotFoud />} />
       </Routes>

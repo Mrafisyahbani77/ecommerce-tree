@@ -53,7 +53,7 @@ const Banner = () => {
 
   if (isFetching || isLoading) {
     return (
-      <div className='pt-32'>
+      <div className="pt-32">
         <Loader />
       </div>
     );
@@ -73,7 +73,7 @@ const Banner = () => {
         customLeftArrow={<CustomLeftArrow />}
         customRightArrow={<CustomRightArrow />}
       >
-        {data?.data.map((banner, index) => (
+        {data?.map((banner, index) => (
           <div key={index} className="relative">
             <img className="w-full lg:h-[60vh] lg:object-center md:h-[350px] h-[ rounded-xl object-cover" src={`http://127.0.0.1:8000/storage/${banner.image_path}`} alt={banner.title} />
             <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black to-transparent w-full flex justify-between items-center">
