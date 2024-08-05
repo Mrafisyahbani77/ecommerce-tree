@@ -7,7 +7,14 @@ import NavbarUser from '../component/NavbarUsers';
 import Keranjang from '../assets/Image/Ker.png';
 import Diskon from '../assets/Image/dis.png';
 import Loading from '../component/Loading';
+import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import Loader from '../component/Loader';
+import { Input, NativeSelect } from '@mui/material';
+import { useFetchAlamat, useFetchKecamatan, useFetchKelurahan, useFetchRegencies } from '../useFetchComponent/useFetchAlamat';
 
 export default function Cart() {
   const [loading, setLoading] = useState(true);
@@ -18,6 +25,12 @@ export default function Cart() {
   const { data: cartData, isError, isFetching, isLoading } = useFetchCart();
   const { data: orderData } = useFetchPay();
   const { mutate: createOrderAndPay, isLoading: buttonLoading } = useCreateOrderAndPay();
+  const { data: alamat, isLoading: loadingAlamat } = useFetchAlamat();
+  const { data: regency, isLoading: loadingRegency } = useFetchRegencies();
+  const { data: kecamatan, isLoading: loadingKecamatan } = useFetchKecamatan();
+  const { data: kelurahan, isLoading: loadingKelurahan } = useFetchKelurahan();
+
+  console.log(kelurahan);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -152,6 +165,109 @@ export default function Cart() {
                     ))}
                   </div>
                 )}
+                <div className="mt-10">
+                  <h1 className="py-3 md:text-2xl text-center font-bold">Alamat</h1>
+                  <FormControl fullWidth>
+                    <InputLabel variant="standard" htmlFor="uncontrolled-native" className="text-xl">
+                      Provinsi
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={30}
+                      inputProps={{
+                        name: 'age',
+                        id: 'uncontrolled-native',
+                      }}
+                    >
+                      {loadingAlamat ? (
+                        <Loader />
+                      ) : (
+                        alamat.map((addres) => (
+                          <option key={addres.id} value={addres.name}>
+                            {addres.name}
+                          </option>
+                        ))
+                      )}
+                    </NativeSelect>
+                  </FormControl>
+                  <FormControl fullWidth className="mt-10">
+                    <InputLabel variant="standard" htmlFor="uncontrolled-native" className="text-xl">
+                      Kabupaten/Kota
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={30}
+                      inputProps={{
+                        name: 'age',
+                        id: 'uncontrolled-native',
+                      }}
+                    >
+                      {loadingRegency ? (
+                        <Loader />
+                      ) : (
+                        regency.map((regency) => (
+                          <option key={regency.id} value={regency.name}>
+                            {regency.name}
+                          </option>
+                        ))
+                      )}
+                    </NativeSelect>
+                  </FormControl>
+                  <FormControl fullWidth className="mt-10">
+                    <InputLabel variant="standard" htmlFor="uncontrolled-native" className="text-xl">
+                      Kecamatan
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={30}
+                      inputProps={{
+                        name: 'kecamatan',
+                        id: 'uncontrolled-native',
+                      }}
+                    >
+                      {loadingKelurahan ? (
+                        <Loader />
+                      ) : (
+                        kelurahan.map((kelurahan) => (
+                          <option key={kelurahan.id} value={kelurahan.name}>
+                            {kelurahan.name}
+                          </option>
+                        ))
+                      )}
+                    </NativeSelect>
+                  </FormControl>
+                  <FormControl fullWidth className="mt-10">
+                    <InputLabel variant="standard" htmlFor="uncontrolled-native" className="text-xl">
+                      Kecamatan
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={30}
+                      inputProps={{
+                        name: 'kecamatan',
+                        id: 'uncontrolled-native',
+                      }}
+                    >
+                      {loadingKecamatan ? (
+                        <Loader />
+                      ) : (
+                        kecamatan.map((kecamatan) => (
+                          <option key={kecamatan.id} value={kecamatan.name}>
+                            {kecamatan.name}
+                          </option>
+                        ))
+                      )}
+                    </NativeSelect>
+                  </FormControl>
+                  <div className="my-5">
+                    <InputLabel variant="standard" htmlFor="uncontrolled-native" className="text-lg my-10">
+                      Kode Pos
+                    </InputLabel>
+                    <Input fullWidth />
+                  </div>
+                  <div className="my-5">
+                    <InputLabel variant="standard" htmlFor="uncontrolled-native" className="text-lg my-10">
+                      Country
+                    </InputLabel>
+                    <Input fullWidth />
+                  </div>
+                </div>
               </>
             )}
           </div>

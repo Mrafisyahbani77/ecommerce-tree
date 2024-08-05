@@ -24,7 +24,6 @@ export const useFetchCart = () => {
     queryFn: async () => {
       const response = await AxiosInstance.get('carts-items/');
       const { data: ProductData } = response;
-      console.log(ProductData.data);
       return ProductData.data;
     },
   });
