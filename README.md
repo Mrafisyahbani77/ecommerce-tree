@@ -1,10 +1,5 @@
-# React + Vite
+# Project ini adalah sebuah project yag digarap 4 orang
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kedepannya kita akan update semua proses nya
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-Repo : https://github.com/HapidzGIT/Frontend-Tree
+Terimakasih 😁🙏
